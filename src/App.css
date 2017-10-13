@@ -21,7 +21,7 @@ nav ul li a {
   color: #393939;
 }
 
-/*Search field inside /Search*/
+/*Search field inside Search*/
 input {
   margin: 3% 30%;
   font-size: 30px;
@@ -38,3 +38,5 @@ input:focus {
 ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   color: #CCCCCC;
 }
+
+/*format of search results*/
