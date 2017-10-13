@@ -44,11 +44,25 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  /*margin: auto;*/
 }
-.wrapper .image {
+.box {
+  position: relative;
+}
+.box img {
   display: inline-block;
   width: 20vw;
   height: 20vw;
-  margin: 1%;
+  padding: 5%;
+}
+.box .redheart {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  font-size:40px;
+  display: none
+}
+.box img:hover + .redheart {
+  display: block;
+  color:#ff0000;
+  opacity: 0.5
 }
