@@ -47,22 +47,28 @@ input:focus {
 }
 .box {
   position: relative;
+  display: block;
+  margin: 1%;
 }
 .box img {
   display: inline-block;
   width: 20vw;
   height: 20vw;
-  padding: 5%;
+
+  border: 1px outset transparent;
 }
 .box .redheart {
   position: absolute;
   right: 5%;
   bottom: 5%;
   font-size:40px;
-  display: none
+  opacity: 0
 }
-.box img:hover + .redheart {
-  display: block;
+.box img:hover ~ .redheart {
   color:#ff0000;
-  opacity: 0.5
+  opacity: 0.5;
+}
+.box .redheart:hover {
+  color:#ff0000;
+  opacity: 0.5;
 }

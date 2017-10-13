@@ -32,7 +32,7 @@ export default class Search extends Component {
       let pictures = result.data.map((pic) => {
         return (
           <div className='box'>
-            <img src={pic.images.original_still.url} alt={this.state.value} />
+            <img src={pic.images.downsized_still.url} alt={this.state.value} />
             <div className='redheart'>&hearts;</div>
           </div>
         )
