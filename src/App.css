@@ -40,3 +40,15 @@ input:focus {
 }
 
 /*format of search results*/
+.wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  /*margin: auto;*/
+}
+.wrapper .image {
+  display: inline-block;
+  width: 20vw;
+  height: 20vw;
+  margin: 1%;
+}

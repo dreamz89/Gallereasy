@@ -31,9 +31,7 @@ export default class Search extends Component {
     .then(result => {
       let pictures = result.data.map((pic) => {
         return (
-          <div key={pic.id}>
-            <img src={pic.images.original_still.url} alt={this.state.value} />
-          </div>
+          <img className='image' src={pic.images.original_still.url} alt={this.state.value} />
         )
       })
       this.setState({pictures: pictures})
@@ -46,7 +44,9 @@ export default class Search extends Component {
         <form>
           <input placeholder='Start searching for images!' type='text' value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
         </form>
-        {this.state.pictures}
+        <div className='wrapper'>
+          {this.state.pictures}
+        </div>
       </div>
     )
   }
