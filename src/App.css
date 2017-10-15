@@ -27,7 +27,7 @@ nav ul li a {
 
 /* Search field inside Search.js */
 input {
-  margin: 3% 30%;
+  margin: 1% 30%;
   font-size: 30px;
   font-family: 'Roboto', sans-serif;
   outline: 0;
@@ -48,7 +48,7 @@ input:focus {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin: 1% 0
+  margin: 1% 0;
 }
 .box {
   position: relative;
@@ -85,6 +85,25 @@ input:focus {
 .box .redheart:hover, .box .favheart:hover {
   color:#ff0000;
   opacity: 0.5;
+}
+
+/* load more button UI styling */
+button {
+  background-color: #393939;
+  color: white;
+  border: none;
+  padding: 0.5%;
+  display: block;
+  width: 20vw;
+  margin: 0 auto
+}
+button:hover {
+  background-color: white;
+  color: #393939;
+  border: solid #393939 1px;
+}
+button:focus {
+  outline:0
 }
 /* UI feedback to user */
 .noresult {

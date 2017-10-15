@@ -7,7 +7,8 @@ export default class Search extends Component {
     this.state = {
       value: '',
       pictures: [],
-      noresult: ''
+      noresult: '',
+      loadmore: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.keyPress = this.keyPress.bind(this)
@@ -20,6 +21,7 @@ export default class Search extends Component {
   keyPress (e) {
     if (e.keyCode === 13) {
       e.preventDefault()
+      this.setState({pictures: []})
       this.searchResult()
     }
   }
@@ -35,8 +37,10 @@ export default class Search extends Component {
   }
 
   searchResult (e) {
-    var input = this.state.value
-    const url = 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=FHvvDNm13xAj2exfW1h4gykFJWXMz3W3&limit=8'
+    var numresults = this.state.pictures.length
+    // var value = this.state.value.replace(/ /g, '+')
+    var input = this.state.value || document.getElementsByTagName('button').value
+    const url = 'http://api.giphy.com/v1/gifs/search?q=' + input + '&api_key=FHvvDNm13xAj2exfW1h4gykFJWXMz3W3&limit=8&offset=' + numresults
     fetch(url)
     .then(response => response.json())
     .then(result => {
@@ -55,9 +59,13 @@ export default class Search extends Component {
       })
       if (pictures.length === 0) {
         this.setState({noresult: 'No images found'})
+        this.setState({pictures: pictures})
+        this.setState({loadmore: ''})
       } else {
         this.setState({noresult: ''})
-        this.setState({pictures: pictures})
+        this.setState({pictures: this.state.pictures.concat(pictures)})
+        var remaining = result.pagination.total_count - this.state.pictures.length
+        this.setState({loadmore: <button value={input} onClick={this.searchResult.bind(this)}>Load more <br /> ({remaining} images left)</button>})
       }
     })
   }
@@ -71,6 +79,7 @@ export default class Search extends Component {
         <div className='wrapper'>
           {this.state.pictures}
         </div>
+        {this.state.loadmore}
         <h2 className='noresult'>{this.state.noresult}</h2>
       </div>
     )
