@@ -56,6 +56,7 @@ export default class Search extends Component {
       if (pictures.length === 0) {
         this.setState({noresult: 'No images found'})
       } else {
+        this.setState({noresult: ''})
         this.setState({pictures: pictures})
       }
     })
@@ -67,10 +68,10 @@ export default class Search extends Component {
         <form>
           <input placeholder='Start searching for images!' type='text' value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
         </form>
-        <h2 className='noresult'>{this.state.noresult}</h2>
         <div className='wrapper'>
           {this.state.pictures}
         </div>
+        <h2 className='noresult'>{this.state.noresult}</h2>
       </div>
     )
   }

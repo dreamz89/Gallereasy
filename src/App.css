@@ -52,15 +52,15 @@ input:focus {
 }
 .box {
   position: relative;
-  display: block;
-  margin: 1%;
-}
-.box img {
   display: inline-block;
+  margin: 1%;
   width: 20vw;
   height: 20vw;
-
-  border: 1px outset transparent;
+  overflow: hidden;
+}
+.box img {
+  min-width: 100%;
+  min-height: 100%
 }
 .box .redheart {
   position: absolute;
