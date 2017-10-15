@@ -42,13 +42,13 @@ export default class App extends Component {
             <nav>
               <ul>
                 <li>Galler<b>easy</b></li>
-                <li><NavLink to='/search'><b>Search</b></NavLink></li>
+                <li><NavLink to='/'><b>Search</b></NavLink></li>
                 <li><NavLink to='/favourites'><b>Favourites {tot}</b></NavLink></li>
               </ul>
             </nav>
 
             <Switch>
-              <Route path='/search' render={() => <Search onAdd={this.onAdd} onRemove={this.onRemove} favs={this.state.favourited} />} />
+              <Route exact path='/' render={() => <Search onAdd={this.onAdd} onRemove={this.onRemove} favs={this.state.favourited} />} />
               <Route path='/favourites' render={() => <Favourites favs={this.state.favourited} />} />
             </Switch>
           </div>

@@ -27,10 +27,10 @@ export default class Search extends Component {
   handleClick (e) {
     if (this.props.favs.includes(e.target.src)) {
       this.props.onRemove(e.target.src)
-      document.getElementById(e.target.className).style = 'opacity: 0'
+      document.getElementById(e.target.className).className = 'redheart'
     } else {
       this.props.onAdd(e.target.src)
-      document.getElementById(e.target.className).style = 'color:#ff0000; opacity: 1'
+      document.getElementById(e.target.className).className = 'favheart'
     }
   }
 

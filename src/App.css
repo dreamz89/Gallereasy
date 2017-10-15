@@ -78,11 +78,11 @@ input:focus {
   color:#ff0000
 }
 
-.box img:hover ~ .redheart {
+.box img:hover ~ .redheart, .box img:hover ~ .favheart {
   color:#ff0000;
   opacity: 0.5;
 }
-.box .redheart:hover {
+.box .redheart:hover, .box .favheart:hover {
   color:#ff0000;
   opacity: 0.5;
 }
