@@ -7,17 +7,24 @@ import Favourites from './Favourites'
 export default class App extends Component {
   constructor (props) {
     super(props)
-    this.state = { favourited: [] }
+    this.state = {
+      favourited: [],
+      total: 0
+    }
     this.onUpdate = this.onUpdate.bind(this)
   }
   onUpdate (fav) {
     this.setState({
-      favourited: this.state.favourited.concat([fav])
+      favourited: this.state.favourited.concat([fav]),
+      total: this.state.total + 1
     })
-    console.log(this.state.favourited)
   }
 
   render () {
+    if (this.state.total > 0) {
+      var tot = <p>({this.state.total})</p>
+    }
+
     return (
       <div>
         <Router>
@@ -26,7 +33,7 @@ export default class App extends Component {
               <ul>
                 <li>Galler<b>easy</b></li>
                 <li><NavLink to='/search'><b>Search</b></NavLink></li>
-                <li><NavLink to='/favourites'><b>Favourites</b></NavLink></li>
+                <li><NavLink to='/favourites'><b>Favourites {tot}</b> </NavLink></li>
               </ul>
             </nav>
 
