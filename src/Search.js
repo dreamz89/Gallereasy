@@ -6,7 +6,8 @@ export default class Search extends Component {
     super(props)
     this.state = {
       value: '',
-      pictures: []
+      pictures: [],
+      noresult: ''
     }
     this.handleChange = this.handleChange.bind(this)
     this.keyPress = this.keyPress.bind(this)
@@ -39,7 +40,7 @@ export default class Search extends Component {
     fetch(url)
     .then(response => response.json())
     .then(result => {
-      let pictures = result.data.map((pic) => {
+      var pictures = result.data.map((pic) => {
         if (this.props.favs.includes(pic.images.downsized_still.url)) {
           var heart = <div className='favheart' id={pic.id}>&hearts;</div>
         } else {
@@ -52,7 +53,11 @@ export default class Search extends Component {
           </div>
         )
       })
-      this.setState({pictures: pictures})
+      if (pictures.length === 0) {
+        this.setState({noresult: 'No images found'})
+      } else {
+        this.setState({pictures: pictures})
+      }
     })
   }
 
@@ -62,6 +67,7 @@ export default class Search extends Component {
         <form>
           <input placeholder='Start searching for images!' type='text' value={this.state.value} onKeyDown={this.keyPress} onChange={this.handleChange} />
         </form>
+        <h2 className='noresult'>{this.state.noresult}</h2>
         <div className='wrapper'>
           {this.state.pictures}
         </div>

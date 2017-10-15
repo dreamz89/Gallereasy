@@ -1,3 +1,4 @@
+/* Navigation styling */
 nav {
   border-bottom-style: solid;
   border-bottom-color: #8A8A8A;
@@ -24,7 +25,7 @@ nav ul li a {
   color: #393939;
 }
 
-/*Search field inside Search*/
+/* Search field inside Search.js */
 input {
   margin: 3% 30%;
   font-size: 30px;
@@ -42,7 +43,7 @@ input:focus {
   color: #CCCCCC;
 }
 
-/*format of search results*/
+/* format of search results */
 .wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -84,4 +85,8 @@ input:focus {
 .box .redheart:hover {
   color:#ff0000;
   opacity: 0.5;
+}
+/* UI feedback to user */
+.noresult {
+  text-align:center;
 }
