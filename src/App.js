@@ -5,6 +5,18 @@ import Search from './Search'
 import Favourites from './Favourites'
 
 export default class App extends Component {
+  constructor (props) {
+    super(props)
+    this.state = { favourited: [] }
+    this.onUpdate = this.onUpdate.bind(this)
+  }
+  onUpdate (fav) {
+    this.setState({
+      favourited: this.state.favourited.concat([fav])
+    })
+    console.log(this.state.favourited)
+  }
+
   render () {
     return (
       <div>
@@ -19,8 +31,8 @@ export default class App extends Component {
             </nav>
 
             <Switch>
-              <Route path='/search' component={Search} />
-              <Route path='/favourites' component={Favourites} />
+              <Route path='/search' render={() => <Search onUpdate={this.onUpdate} />} />
+              <Route path='/favourites' render={() => <Favourites favs={this.state.favourited} />} />
             </Switch>
           </div>
         </Router>

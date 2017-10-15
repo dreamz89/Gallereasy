@@ -6,8 +6,7 @@ export default class Search extends Component {
     super(props)
     this.state = {
       value: '',
-      pictures: [],
-      favourited: []
+      pictures: []
     }
     this.handleChange = this.handleChange.bind(this)
     this.keyPress = this.keyPress.bind(this)
@@ -24,11 +23,9 @@ export default class Search extends Component {
     }
   }
 
-  handleClick (fav, id, e) {
-    this.setState({
-      favourited: this.state.favourited.concat([fav])
-    })
-    document.getElementById(id).style = 'color:#ff0000; opacity: 1'
+  handleClick (e) {
+    this.props.onUpdate(e.target.src)
+    document.getElementById(e.target.className).style = 'color:#ff0000; opacity: 1'
   }
 
   searchResult (e) {
@@ -40,7 +37,7 @@ export default class Search extends Component {
       let pictures = result.data.map((pic) => {
         return (
           <div className='box' key={pic.id}>
-            <img src={pic.images.downsized_still.url} alt={this.state.value} onClick={(e) => this.handleClick(pic.images.downsized_still.url, pic.id, e)} />
+            <img src={pic.images.downsized_still.url} alt={this.state.value} className={pic.id} onClick={this.handleClick.bind(this)} />
             <div className='redheart' id={pic.id}>&hearts;</div>
           </div>
         )
