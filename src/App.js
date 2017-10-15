@@ -33,12 +33,12 @@ export default class App extends Component {
               <ul>
                 <li>Galler<b>easy</b></li>
                 <li><NavLink to='/search'><b>Search</b></NavLink></li>
-                <li><NavLink to='/favourites'><b>Favourites {tot}</b> </NavLink></li>
+                <li><NavLink to='/favourites'><b>Favourites {tot}</b></NavLink></li>
               </ul>
             </nav>
 
             <Switch>
-              <Route path='/search' render={() => <Search onUpdate={this.onUpdate} />} />
+              <Route path='/search' render={() => <Search onUpdate={this.onUpdate} favs={this.state.favourited} />} />
               <Route path='/favourites' render={() => <Favourites favs={this.state.favourited} />} />
             </Switch>
           </div>

@@ -68,6 +68,15 @@ input:focus {
   font-size:40px;
   opacity: 0
 }
+.box .favheart {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+  font-size:40px;
+  opacity: 1;
+  color:#ff0000
+}
+
 .box img:hover ~ .redheart {
   color:#ff0000;
   opacity: 0.5;

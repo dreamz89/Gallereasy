@@ -35,10 +35,15 @@ export default class Search extends Component {
     .then(response => response.json())
     .then(result => {
       let pictures = result.data.map((pic) => {
+        if (this.props.favs.includes(pic.images.downsized_still.url)) {
+          var heart = <div className='favheart' id={pic.id}>&hearts;</div>
+        } else {
+          heart = <div className='redheart' id={pic.id}>&hearts;</div>
+        }
         return (
           <div className='box' key={pic.id}>
             <img src={pic.images.downsized_still.url} alt={this.state.value} className={pic.id} onClick={this.handleClick.bind(this)} />
-            <div className='redheart' id={pic.id}>&hearts;</div>
+            {heart}
           </div>
         )
       })
