@@ -24,8 +24,13 @@ export default class Search extends Component {
   }
 
   handleClick (e) {
-    this.props.onUpdate(e.target.src)
-    document.getElementById(e.target.className).style = 'color:#ff0000; opacity: 1'
+    if (this.props.favs.includes(e.target.src)) {
+      this.props.onRemove(e.target.src)
+      document.getElementById(e.target.className).style = 'opacity: 0'
+    } else {
+      this.props.onAdd(e.target.src)
+      document.getElementById(e.target.className).style = 'color:#ff0000; opacity: 1'
+    }
   }
 
   searchResult (e) {

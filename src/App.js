@@ -11,12 +11,22 @@ export default class App extends Component {
       favourited: [],
       total: 0
     }
-    this.onUpdate = this.onUpdate.bind(this)
+    this.onAdd = this.onAdd.bind(this)
+    this.onRemove = this.onRemove.bind(this)
   }
-  onUpdate (fav) {
+  onAdd (fav) {
     this.setState({
       favourited: this.state.favourited.concat([fav]),
       total: this.state.total + 1
+    })
+  }
+
+  onRemove (fav) {
+    var index = this.state.favourited.indexOf(fav)
+    this.state.favourited.splice(index, 1)
+    this.setState({
+      favourited: this.state.favourited,
+      total: this.state.total - 1
     })
   }
 
@@ -38,7 +48,7 @@ export default class App extends Component {
             </nav>
 
             <Switch>
-              <Route path='/search' render={() => <Search onUpdate={this.onUpdate} favs={this.state.favourited} />} />
+              <Route path='/search' render={() => <Search onAdd={this.onAdd} onRemove={this.onRemove} favs={this.state.favourited} />} />
               <Route path='/favourites' render={() => <Favourites favs={this.state.favourited} />} />
             </Switch>
           </div>
